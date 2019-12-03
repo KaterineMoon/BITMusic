@@ -1,0 +1,30 @@
+<div class="row mt-3">
+    <div class="col-12" *ngIf="usuario.role == 'ROLE_ADMIN'">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-light" (click)="asignarUbicacion('editarCanciones')">Crear
+                canciones</button>
+            <button type="button" class="btn btn-light" (click)="asignarUbicacion('perfil')">Mi perfil</button>
+            <button type="button" class="btn btn-light" (click)="asignarUbicacion('buscar')">Buscar canciones</button>
+        </div>
+    </div>
+    <div class="col-12" *ngIf="usuario.role != 'ROLE_ADMIN'">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-light" (click)="asignarUbicacion('perfil')">Mi perfil</button>
+            <button type="button" class="btn btn-light" (click)="asignarUbicacion('buscar')">Buscar canciones</button>
+        </div>
+    </div>
+</div>
+
+<div class="row text-white mt-3">
+
+    <div class="col-6">
+        <app-user-profile *ngIf="ubicacion == 'perfil'"></app-user-profile>
+        <app-menu-song *ngIf="ubicacion == 'buscar'"></app-menu-song>
+        <app-song-tools *ngIf="ubicacion == 'editarCanciones'"></app-song-tools>
+    </div>
+
+    <div class="col-5 ml-auto">
+        <app-player></app-player>
+    </div>
+
+</div>

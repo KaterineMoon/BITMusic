@@ -1,0 +1,39 @@
+<div id="listaCanciones" class="mb-3">
+    <h1>
+        Canciones
+    </h1>
+
+    <ul class="list-group " *ngIf="existenCanciones">
+        <li class="list-group-item list-group-item-secondary d-flex" *ngFor="let cancion of canciones">
+            {{cancion.titulo + ' - ' + cancion.artista + ' - ' + cancion.genero + ' - ' + cancion.duracion}}
+            <div class="ml-auto">
+                <a data-toggle="modal" href="#modal" class="iconoCancion" (click)="agregarListaReproduccion(cancion)">
+                    <i class="fas fa-play"></i>
+                </a>
+                <a data-toggle="modal" href="#modal" *ngIf="usuario.role == 'ROLE_ADMIN'" class="iconoCancion ml-2" (click)="eliminarCancion(cancion)">
+                    <i class="fas fa-trash-alt"></i>
+                </a>
+            </div>
+        </li>
+    </ul>
+
+
+
+</div>
+
+<div class="modal fade bd-example-modal-sm text-dark" id="modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Aviso!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{avisoCanciones}}
+            </div>
+        </div>
+    </div>
+</div>

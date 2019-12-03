@@ -1,0 +1,30 @@
+<form #updateForm="ngForm" (ngSubmit)="actualizarDatos()" ngNativeValidate>
+    <h1>Actualizar mis datos</h1>
+    <p>Nombre:
+        <input type="text" class="form-control" #nombre="ngModel" name="nombre" [(ngModel)]="usuario.nombre" required>
+    </p>
+    <p>Edad:
+        <input type="text" class="form-control" name="edad" #edad="ngModel" [(ngModel)]="usuario.edad" required>
+    </p>
+    <p>Correo:
+        <input type="email" class="form-control" #correo="ngModel" name="correo" [(ngModel)]="usuario.correo" required>
+    </p>
+    <p>Password:
+        <input type="password" class="form-control" #password="ngModel" name="password" [(ngModel)]="usuario.password"
+            required>
+    </p>
+
+    <div *ngIf="usuario.imagen && usuario.imagen != null">
+        <img class="img-fluid" id="cargarImagen" src="{{url+'obtener-imagen-usuario/'+usuario.imagen}}" alt="">
+    </div>
+    <p>
+        <label> Sube tu imagen:</label>
+        <br>
+        <input type="file" placeholder="Subir imagen" (change)="fileChangeEvent($event)">
+    </p>
+    <button type="submit" class="btn btn-light">Actualizar Datos</button>
+    <br><br>
+    <div *ngIf="actualizacionCorrecta" class="alert alert-danger">
+        {{actualizacionCorrecta}}
+    </div>
+</form>

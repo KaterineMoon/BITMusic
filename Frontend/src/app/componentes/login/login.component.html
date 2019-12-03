@@ -1,0 +1,23 @@
+<div class="row my-5 text-white" >
+
+        <div class="col-5 mx-auto">
+            <form #loginForm="ngForm" (ngSubmit)="login()" ngNativeValidate>
+                <h1>Iniciar sesion</h1>
+                <br>
+                <p>Correo:</p>
+                <input type="email" class="form-control" #correo="ngModel" name="correo" [(ngModel)]="usuario.correo"
+                    required>
+                    <br>
+                <p>Password:</p>
+                <input type="password" class="form-control" #password="ngModel" name="password"
+                    [(ngModel)]="usuario.password" required>
+                <br><br>
+                <button type="submit" class="btn btn-light">Ingresar</button>
+                <br><br>
+                <div *ngIf="loginCorrecto" class="alert alert-danger">
+                    {{loginCorrecto}}
+                </div>
+            </form>
+        </div>
+    
+</div>

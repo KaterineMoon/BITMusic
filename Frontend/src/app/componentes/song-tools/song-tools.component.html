@@ -1,0 +1,38 @@
+<form class="mb-4" #updateForm="ngForm" (ngSubmit)="manejoCancion()" ngNativeValidate>
+    <h1>{{ tituloComponente }}</h1>
+    <p>Titulo:
+        <input type="text" class="form-control" #titulo="ngModel" 
+        name="titulo" [(ngModel)]="cancion.titulo" required [disabled]="cargarFichero">
+    </p>
+    <p>Duracion:
+        <input type="text" class="form-control" name="duracion" 
+        #duracion="ngModel" [(ngModel)]="cancion.duracion"
+        [disabled]="cargarFichero" required>
+    </p>
+    <p>Genero:
+        <input type="text" class="form-control" #genero="ngModel"
+         name="genero" [(ngModel)]="cancion.genero" [disabled]="cargarFichero" required>
+    </p>
+    <p>artista:
+        <input type="text" class="form-control" #artista="ngModel" 
+        name="artista" [(ngModel)]="cancion.artista"
+        [disabled]="cargarFichero"    required>
+    </p>
+
+    <div *ngIf="cargarFichero">
+        <p>
+            <label> Sube el fichero de audio</label>
+            <br>
+            <input type="file" placeholder="Subir fichero" (change)="fileChangeEvent($event)">
+        </p>
+    </div>
+    <div class="dflex">
+        <button type="submit" class="btn btn-light">{{ tituloComponente }}</button>
+    </div>
+    <br><br>
+    <div *ngIf="cancionCorrecta" class="alert alert-danger d-flex align-items-center">
+        {{cancionCorrecta}}
+        <div class="spinner-border ml-auto" *ngIf="actualizacionCorrecta"
+        role="status" aria-hidden="true"></div>
+    </div>
+</form>

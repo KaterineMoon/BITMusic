@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a [routerLink]="['']" class="navbar-brand">
+    <img [src]="title" class="logo" />
+  </a>
+  <a [routerLink]="['/login']" class="ml-auto" *ngIf="!usuarioLogueado">
+    <i class="far fa-user"></i>
+    Iniciar Sesion
+  </a>
+  <a
+    [routerLink]=""
+    (click)="cerrarSesion()"
+    class="ml-auto"
+    *ngIf="usuarioLogueado"
+  >
+    <i class="far fa-user"></i>
+    Cerrar sesion
+  </a>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+<app-footer></app-footer>
